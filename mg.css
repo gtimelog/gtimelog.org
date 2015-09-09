@@ -1,0 +1,80 @@
+body {
+  margin: 1em;
+  color: black;
+  background: white;
+}
+
+h1, h2, h3 {
+  color: #134D73;
+  margin: 0.5em 0 0.5ex 0;
+}
+div.subtitle {
+  color: #134D73;
+  margin: 0 0.5ex 2em 2ex;
+  font-size: large;
+}
+
+div.introduction {
+  font-size: small;
+  color: gray;
+  margin: 0 1em 2em 0;
+}
+
+a {
+  color: #869ABF;
+}
+a:visited {
+  color: purple;
+}
+a:active, a:hover {
+  color: #B22222;
+}
+
+tt {
+  font-family: Andale Mono, monospace;
+}
+
+span.prompt {
+    color: #00cc00;
+}
+span.typing {
+    color: #0000cc;
+}
+
+hr.footer {
+  height: 1px;
+  border: none;
+  border-top: 1px dotted gray;
+  margin: 2em 10em 1em 10em;
+}
+
+div.footer {
+  margin-top: 0.5em;
+  font-size: x-small;
+  color: gray;
+  margin: 1em 2em;
+  }
+
+/* Nonintrusive hyperlinks */
+
+div.introduction a,
+div.storyfooter a,
+div.footer a {
+  color: gray;
+  font-weight: normal;
+  text-decoration: none;
+  border-bottom: 1px dotted gray;
+}
+div.introduction a:visited,
+div.storyfooter a:visited,
+div.footer a:visited {
+  color: gray;
+}
+div.introduction a:active,
+div.introduction a:hover,
+div.storyfooter a:active,
+div.storyfooter a:hover,
+div.footer a:active,
+div.footer a:hover {
+  color: #b22222;
+}
