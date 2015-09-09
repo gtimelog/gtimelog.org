@@ -30,6 +30,10 @@ a:active, a:hover {
   color: #B22222;
 }
 
+img {
+  border: 0;
+}
+
 tt {
   font-family: Andale Mono, monospace;
 }
