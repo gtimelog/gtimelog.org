@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>gtimelog</title>
@@ -85,15 +85,15 @@ you have timelog.txt open in a text editor.
 <h2>Downloading</h2>
 
 <p>There is a gtimelog package in <a
-  href="http://packages.debian.org/gtimelog">Debian</a> and in <a
-  href="http://packages.ubuntu.com/gtimelog">Ubuntu</a>.  You probably won't
+  href="https://packages.debian.org/gtimelog">Debian</a> and in <a
+  href="https://packages.ubuntu.com/gtimelog">Ubuntu</a>.  You probably won't
 get the latest version this way, thought.</p>
 
-<p>The latest release is available from the <a href="http://pypi.python.org/pypi/gtimelog">Python
+<p>The latest release is available from the <a href="https://pypi.python.org/pypi/gtimelog">Python
 Package Index</a>.  You can <code>pip install gtimelog</code>.</p>
 
-<p>You will also need <a href="http://www.python.org">Python
-  2.7 (or 3.3+)</a> and <a href="http://www.pygtk.org">PyGTK</a>.</p>
+<p>You will also need <a href="https://www.python.org">Python
+  2.7 (or 3.4+)</a> and <a href="https://pygobject.readthedocs.io/en/latest/">PyGObject</a>.</p>
 
 <p>GTimeLog should also work on Windows and Mac OS X, but I don't have convenient
 installers.</p>
@@ -101,10 +101,10 @@ installers.</p>
 <h2>Getting Started</h2>
 
 <p>When you run GTimeLog the first time, it will create a configuration file
-(~/.gtimelog/gtimelogrc) with the default settings.  Edit it to set your name
+(~/.config/gtimelog/gtimelogrc or ~/.gtimelog/gtimelogrc) with the default settings.  Edit it to set your name
 and other settings.  You'll need to restart GTimeLog for the changes to take
-effect.  A sane configuration dialog is <a href="https://bugs.launchpad.net/gtimelog/+bug/220766">planned
-  for some future version</a>.</p>
+effect.  (A more convenient configuration dialog is implemented in Git master,
+which also switches to GSettings.)</p>
 
 <h2>Bugs</h2>
 
@@ -123,13 +123,14 @@ git clone <a href="https://github.com/gtimelog/gtimelog">https://github.com/gtim
 <p>GTimeLog was written by <a href="mailto:marius@gedmin.as">Marius Gedminas</a>,
 with contributions from <a href="https://github.com/gtimelog/gtimelog/blob/master/CONTRIBUTORS.rst">many others</a>.
 It is released under the terms of the <a
-  href="http://www.gnu.org/copyleft/gpl.html">GNU GPL</a>.</p>
+  href="https://www.gnu.org/copyleft/gpl.html">GNU GPL</a>.</p>
 
 <hr class="footer" />
 
 <div class="footer">
-  Copyright &copy; 2005&ndash;2015, Marius Gedminas.  This page should be
+  Copyright &copy; 2005&ndash;2017, Marius Gedminas.  This page should be
   <a href="https://validator.w3.org/nu/?doc=https://gtimelog.org/">valid</a> HTML and CSS.
+  It's maintained <a href="https://github.com/gtimelog/gtimelog.org">on GitHub also</a>.
 </div>
 
 </body>
