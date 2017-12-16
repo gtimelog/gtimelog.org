@@ -8,10 +8,19 @@ h1, h2, h3 {
   color: #134D73;
   margin: 0.5em 0 0.5ex 0;
 }
-div.subtitle {
+h1.title {
+  font-size: 2em;
+  font-weight: bold;
+}
+h2.subtitle {
   color: #134D73;
   margin: 0 0.5ex 2em 2ex;
   font-size: large;
+  font-weight: normal;
+}
+h1 {
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 div.introduction {
@@ -38,47 +47,43 @@ tt {
   font-family: Andale Mono, monospace;
 }
 
-span.prompt {
-    color: #00cc00;
-}
-span.typing {
-    color: #0000cc;
+pre {
+  margin-left: 40px;
 }
 
-hr.footer {
+span.prompt {
+  color: #00cc00;
+}
+span.typing {
+  color: #0000cc;
+}
+
+hr {
   height: 1px;
   border: none;
   border-top: 1px dotted gray;
   margin: 2em 10em 1em 10em;
 }
 
-div.footer {
+p.footer {
   margin-top: 0.5em;
   font-size: x-small;
   color: gray;
   margin: 1em 2em;
-  }
+}
 
 /* Nonintrusive hyperlinks */
 
-div.introduction a,
-div.storyfooter a,
-div.footer a {
+p.footer a {
   color: gray;
   font-weight: normal;
   text-decoration: none;
   border-bottom: 1px dotted gray;
 }
-div.introduction a:visited,
-div.storyfooter a:visited,
-div.footer a:visited {
+p.footer a:visited {
   color: gray;
 }
-div.introduction a:active,
-div.introduction a:hover,
-div.storyfooter a:active,
-div.storyfooter a:hover,
-div.footer a:active,
-div.footer a:hover {
+p.footer a:active,
+p.footer a:hover {
   color: #b22222;
 }

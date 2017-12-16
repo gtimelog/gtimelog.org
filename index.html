@@ -1,137 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>gtimelog</title>
-  <link rel="stylesheet" href="mg.css">
-  <meta name="description" content="GTimeLog is a small GTK+ app for keeping track of your time. Its main goal is to be as unintrusive as possible.">
-  <meta name="keywords" content="time, tracker, log, python, gnome, timetracker, timelog, logger">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>gtimelog</title>
+<link rel="stylesheet" href="mg.css" type="text/css" />
 </head>
 <body>
+<div class="document" id="gtimelog">
+<h1 class="title">gtimelog</h1>
+<h2 class="subtitle" id="a-time-tracking-app">A time tracking app</h2>
 
-<h1>gtimelog</h1>
-
-<div class="subtitle">GTK+ time tracking app</div>
-
-<p>GTimeLog is a small GTK+ app for keeping track of your time.  Its
+<p>GTimeLog is a small time tracking application for GNOME.  Its
 main goal is to be as unintrusive as possible.</p>
-
-<p>
-<img src="gtimelog-gtk3.png" alt="Screenshot" />
-</p>
-
-<p>Here's how it works: every day, when you arrive to work, start up gtimelog
-and type "arrived".  Then start doing some activity (e.g. reading mail, or
-working on a task).  Whenever you stop doing an activity (either when you have
-finished it, or when you switch to working on something else), type the name of
-the activity into the gtimelog prompt.  Try to use the same text if you make
-several entries for an activity (history helps here&mdash;just use the up and down
-arrow keys).  They key principle here is to name the activity after you've
-stopped working on it, and not when you've started.  Of course you can type the
-activity name upfront, and just delay pressing the Enter key until you're done.
-</p>
-
-<p>There are two broad categories of activities: ones that count as work (coding,
-planning, writing proposals or reports, answering work-related email), and ones
-that don't (browsing the web for fun, reading personal email, chatting with
-a friend on the phone for two hours, going out for a lunch break).  To indicate
-which activities are not work related add two asterisks to the activity name:
-<p>
-
-<blockquote><pre>
-lunch **
-browsing slashdot **
-napping on the couch **
-</pre></blockquote>
-
-If you want some activity (or non-activity) to be completely omitted from the
-reports, use three asterisks (this works only in GTimeLog 0.2.1 or later):
-
-<blockquote><pre>
-break ***
-</pre></blockquote>
-
-<p>
-GTimeLog displays all the things you've done today, and calculates the total
-time you spent working, and the total time you spent "slacking".  It also
-advises you how much time you still have to work today to get 8 hours of work
-done.  There are two basic views: one shows all the activities in chronological
-order, with starting and ending times; while another groups all entries with
-the same into one activity and just shows the total duration.
-</p>
-
-<p>
-At the end of the day you can send off a daily report by choosing Report -&gt; Daily
-Report.  A mail program (Mutt in a terminal, unless you have changed it in
-~/.gtimelog/gtimelogrc or ~/.config/gtimelog/gtimelogrc) will be started with
-all the activities listed in it.  My Mutt configuration lets me edit the report
-before sending it.
-</p>
-
-<p>
-If you make a mistake and type in the wrong activity name, or just forget to
-enter an activity, don't worry.  GTimeLog stores the time log in a simple plain
-text file ~/.gtimelog/timelog.txt (or ~/.local/share/gtimelog/timelog.txt).
-Every line contains a timestamp and the name of the activity that was finished
-at the time.  All other lines are ignored, so you can add comments if you want
-to&mdash;just make sure no comment begins with a timestamp.  You do not have to
-worry about GTimeLog overwriting your changes&mdash;GTimeLog always appends
-entries at the end of the file, and does not keep the log file open all the
-time.  You do have to worry about overwriting changes made by GTimeLog with
-your editor&mdash;make sure you do not enter any activities in GTimeLog while
-you have timelog.txt open in a text editor.
-</p>
-
-<h2>Downloading</h2>
-
-<p>There is a gtimelog package in <a
-  href="https://packages.debian.org/gtimelog">Debian</a> and in <a
-  href="https://packages.ubuntu.com/gtimelog">Ubuntu</a>.  You probably won't
-get the latest version this way, thought.</p>
-
-<p>The latest release is available from the <a href="https://pypi.python.org/pypi/gtimelog">Python
-Package Index</a>.  You can <code>pip install gtimelog</code>.</p>
-
-<p>You will also need <a href="https://www.python.org">Python
-  2.7 (or 3.4+)</a> and <a href="https://pygobject.readthedocs.io/en/latest/">PyGObject</a>.</p>
-
-<p>GTimeLog should also work on Windows and Mac OS X, but I don't have convenient
-installers.</p>
-
-<h2>Getting Started</h2>
-
-<p>When you run GTimeLog the first time, it will create a configuration file
-(~/.config/gtimelog/gtimelogrc or ~/.gtimelog/gtimelogrc) with the default settings.  Edit it to set your name
-and other settings.  You'll need to restart GTimeLog for the changes to take
-effect.  (A more convenient configuration dialog is implemented in Git master,
-which also switches to GSettings.)</p>
-
-<h2>Bugs</h2>
-
-<p>Please report bugs/feature requests on <a
-  href="https://github.com/gtimelog/gtimelog/issues">GitHub</a>.</p>
-
-<h2>Sources</h2>
-
-<p>The source lives on GitHub.  Get it with</p>
-<blockquote><pre>
-git clone <a href="https://github.com/gtimelog/gtimelog">https://github.com/gtimelog/gtimelog</a>
-</pre></blockquote>
-
-<h2>Author</h2>
-
-<p>GTimeLog was written by <a href="mailto:marius@gedmin.as">Marius Gedminas</a>,
-with contributions from <a href="https://github.com/gtimelog/gtimelog/blob/master/CONTRIBUTORS.rst">many others</a>.
-It is released under the terms of the <a
-  href="https://www.gnu.org/copyleft/gpl.html">GNU GPL</a>.</p>
-
-<hr class="footer" />
-
-<div class="footer">
-  Copyright &copy; 2005&ndash;2017, Marius Gedminas.  This page should be
-  <a href="https://validator.w3.org/nu/?doc=https://gtimelog.org/">valid</a> HTML and CSS.
-  It's maintained <a href="https://github.com/gtimelog/gtimelog.org">on GitHub also</a>.
+<img alt="Screenshot" src="gtimelog.png" />
+<div class="section" id="documentation">
+<h1>Documentation</h1>
+<ul class="simple">
+<li><a class="reference external" href="docs.html">Overview</a></li>
+<li><a class="reference external" href="formats.html">File formats</a></li>
+</ul>
 </div>
-
+<div class="section" id="download">
+<h1>Download</h1>
+<p>You can get GTimeLog from the <a class="reference external" href="https://pypi.python.org/pypi/gtimelog">Python Package Index</a>:</p>
+<pre class="literal-block">
+pip install gtimelog
+</pre>
+<p>Packages exist in <a class="reference external" href="https://packages.debian.org/gtimelog">Debian</a> and in <a class="reference external" href="https://packages.ubuntu.com/gtimelog">Ubuntu</a>, but they're outdated at the moment.</p>
+<p>GTimeLog should in theory also run on Windows and Mac OS X, but I don't
+have convenient installers.</p>
+</div>
+<div class="section" id="bugs">
+<h1>Bugs</h1>
+<p>Please report bugs/feature requests on <a class="reference external" href="https://github.com/gtimelog/gtimelog/issues">GitHub</a>.</p>
+</div>
+<div class="section" id="source-code">
+<h1>Source code</h1>
+<p>The source code lives on <a class="reference external" href="https://github.com/gtimelog/gtimelog">GitHub</a>.  Get it with</p>
+<pre class="literal-block">
+git clone https://github.com/gtimelog/gtimelog
+</pre>
+</div>
+<div class="section" id="author">
+<h1>Author</h1>
+<p>GTimeLog was written by <a class="reference external" href="mailto:marius&#64;gedmin.as">Marius Gedminas</a>, with contributions from <a class="reference external" href="https://github.com/gtimelog/gtimelog/blob/master/src/gtimelog/CONTRIBUTORS.rst">many
+others</a>.  It is released under the terms of the <a class="reference external" href="https://www.gnu.org/copyleft/gpl.html">GNU GPL</a>.</p>
+<hr class="docutils" />
+<p class="footer">Copyright © 2005–2017, Marius Gedminas.  This page should be
+<a class="reference external" href="https://validator.w3.org/nu/?doc=https://gtimelog.org/">valid</a>
+HTML and CSS.  It's maintained <a class="reference external" href="https://github.com/gtimelog/gtimelog.org">on GitHub also</a>.</p>
+</div>
+</div>
 </body>
 </html>

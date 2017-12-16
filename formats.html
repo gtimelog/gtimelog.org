@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>Data Formats</title>
+<link rel="stylesheet" href="mg.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="data-formats">
+<h1 class="title">Data Formats</h1>
+
+<p>These tools were designed for easy interoperability.  The data formats are
+both human and machine readable, easy to edit, easy to parse.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#timelog-txt" id="id1">timelog.txt</a></li>
+<li><a class="reference internal" href="#tasks-txt" id="id2">tasks.txt</a></li>
+<li><a class="reference internal" href="#daily-report-emails" id="id3">Daily report emails</a></li>
+<li><a class="reference internal" href="#sentreports-log" id="id4">sentreports.log</a></li>
+</ul>
+</div>
+<div class="section" id="timelog-txt">
+<h1><a class="toc-backref" href="#id1">timelog.txt</a></h1>
+<p>Here is a formal grammar:</p>
+<pre class="literal-block">
+file ::= (entry|day-separator|comment|old-style-comment)*
+
+entry ::= timestamp &quot;:&quot; SPACE title NEWLINE
+
+day-separator ::= NEWLINE
+
+comment ::= &quot;#&quot; anything* NEWLINE
+
+old-style-comment ::= anything* NEWLINE
+
+title ::= anything*
+</pre>
+<p><em>timestamp</em> is <tt class="docutils literal"><span class="pre">YYYY-MM-DD</span> HH:MM</tt> with a single space between the date and
+the time.</p>
+<p><em>anything</em> is any character except a newline.</p>
+<p><em>NEWLINE</em> is whatever Python considers it to be (i.e. CR LF or just LF).</p>
+<p>GTimeLog adds a blank line between days.  It ignores them when loading, but
+this is likely to change in the future.</p>
+<p>GTimeLog considers any lines not starting with a valid timestamp to be
+comments.  This is likely to change in the future, so please use '#' to
+indicate real comments if you find you need them.</p>
+<p>All lines should be sorted by time.  Currently GTimeLog won't complain if
+they're not, and it will sort them to compensate.</p>
+<p>GTimeLog doesn't re-write the file, it only appends to it.</p>
+<p>Example:</p>
+<pre class="literal-block">
+# this is a comment
+2015-09-14 08:03: arrived at work **
+2015-09-14 11:57: project-foo: working on task #1234
+2015-09-14 13:04: lunch **
+2015-09-14 16:34: project-foo: working on task #1234
+2015-09-14 16:57: checking mail
+
+2015-09-15 08:01: arrived at work **
+...
+</pre>
+<p>Bugs:</p>
+<ul class="simple">
+<li>There's no place for timezones.  If you want to track your travel times
+with GTimeLog, you're gonna have a bad time.</li>
+<li>If you work late at night and change the value of &quot;virtual midnight&quot;,
+old historical entries can be misinterpreted.</li>
+</ul>
+</div>
+<div class="section" id="tasks-txt">
+<h1><a class="toc-backref" href="#id2">tasks.txt</a></h1>
+<p>Task list is a text file, with one task per line.  Empty lines and lines
+starting with a '#' are ignored.  Task names should consist of a group name
+(project name, XP-style story, whatever), a colon, and a task name.  Tasks will
+be grouped.  If there is no colon on a line, the task will be grouped under
+&quot;Other&quot;.</p>
+<p>Example:</p>
+<pre class="literal-block">
+# usual everyday tasks
+mail
+sysadmining
+# project tasks
+project-foo: fix bug with frobnicator (GH: #42)
+project-foo: implement feature X (GH: #123)
+project-bar: daily standup
+</pre>
+</div>
+<div class="section" id="daily-report-emails">
+<h1><a class="toc-backref" href="#id3">Daily report emails</a></h1>
+<p>Daily reports look like this:</p>
+<pre class="literal-block">
+random text
+random text
+Entry title                Duration
+Entry title                Duration
+random text
+Entry title                Duration
+Entry title                Duration
+random text
+</pre>
+<p>Formal grammar:</p>
+<pre class="literal-block">
+report ::= (entry|comment)*
+
+entry ::= title space space duration newline
+
+comment ::= anything* newline
+
+title ::= anything*
+
+duration ::= hours &quot;,&quot; space minutes
+          |  hours space minutes
+          |  hours
+          |  minutes
+
+hours ::= number space &quot;hour&quot;
+       |  number space &quot;hours&quot;
+
+minutes ::= number space &quot;min&quot;
+</pre>
+<p>There is a convention that entries that include two asterisks in their titles
+indicate slacking or pauses between work activities.</p>
+</div>
+<div class="section" id="sentreports-log">
+<h1><a class="toc-backref" href="#id4">sentreports.log</a></h1>
+<p>This is a comma-separated-value (CSV) file that logs all sent reports.
+The columns are: timestamp, report kind (daily/weekly/monthly), report
+date, recipient's email address.</p>
+<p>Weekly report dates use the ISO week numbering (YYYY/WW).</p>
+<p>Example:</p>
+<pre class="literal-block">
+2015-09-09 13:11:41,dayly,2015-09-09,activity&#64;example.com
+2015-09-09 13:12:39,weekly,2015/37,activity&#64;example.com
+2015-09-09 13:12:44,monthly,2015-09,activity&#64;example.com
+2015-09-09 13:12:57,daily,2015-09-09,activity&#64;example.com
+</pre>
+<hr class="docutils" />
+<p class="footer">Copyright © 2005–2017, Marius Gedminas.  This page should be
+<a class="reference external" href="https://validator.w3.org/nu/?doc=https://gtimelog.org/">valid</a>
+HTML and CSS.  It's maintained <a class="reference external" href="https://github.com/gtimelog/gtimelog.org">on GitHub also</a>.</p>
+</div>
+</div>
+</body>
+</html>
